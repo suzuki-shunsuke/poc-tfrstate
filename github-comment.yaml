@@ -1,0 +1,13 @@
+# https://github.com/suzuki-shunsuke/github-comment
+post:
+  output-change:
+    template: |
+      ## :warning: {{if .Vars.target}}{{.Vars.target}}: {{end}}Terraform Output Values are changed
+
+      {{template "link" .}}
+
+      The following directories depend on the changed output values:
+
+      ```json
+      {{.Vars.result}}
+      ```

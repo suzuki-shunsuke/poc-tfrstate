@@ -1,0 +1,23 @@
+---
+name: test
+on: pull_request
+jobs:
+  test:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: aquaproj/aqua-installer@f13c5d2f0357708d85477aabe50fd3f725528745 # v3.1.0
+        with:
+          aqua_version: v2.38.1
+      # terraform plan -out plan.out
+      # terraform show -json plan.out > plan.json
+      - run: |
+          tfrstate run -plan-json plan.json -base-dir "$GITHUB_WORKSPACE" > result.json
+          length=$(jq length result.json)
+          if [ "$length" -eq 0 ]; then
+            exit 0
+          fi
+          github-comment post -k output-change -var target:services/foo -var-file result:result.json
+        working-directory: services/foo
