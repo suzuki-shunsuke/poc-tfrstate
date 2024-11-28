@@ -31,9 +31,39 @@
       "algorithm": "sha256"
     },
     {
-      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.263.0/registry.yaml",
-      "checksum": "5374830250118562581DCDDE263979FF807CA66514729AE26EC3F367BD368BA5",
+      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-0/tfrstate_darwin_amd64.tar.gz",
+      "checksum": "800D02CE11883239DE5215FC2745FF19C63CBDE7A6DF691C5F1F1B6B33E0993F",
       "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-0/tfrstate_darwin_arm64.tar.gz",
+      "checksum": "245CF4DCA47B58B38A9E1CBC82EF021C282ED35FF006958AA9FF6DE2248F0FA1",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-0/tfrstate_linux_amd64.tar.gz",
+      "checksum": "47090123584DAA11DF9E19AFF21DB0F379A382F10DBA6D1C8D0810E9851BA783",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-0/tfrstate_linux_arm64.tar.gz",
+      "checksum": "3D60F42EC7B2A25D28AE1C6D1DE1B48FA2C3EDF5B3EAF6EB460C7D111C13AB5E",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-0/tfrstate_windows_amd64.zip",
+      "checksum": "DE07EE4FF930D143F4B21959FE1929923A91CD525467CC366BEF89A22C30C47D",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-0/tfrstate_windows_arm64.zip",
+      "checksum": "B90BCF06692C92ACFD0206A3C455AB0A71F0A802A9C2E688A4FF6643E9C7C221",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/b9eed60d3265271a973644262c983f49aba943f2/registry.yaml",
+      "checksum": "16E5DAB9C277571D37158CF51F8286EDAA1F48B5DC6D9593296DABB974B062A1A310A4530F1E346701E1FAD842C0B0A374C317AF85C620A09AC2F5E93E3603D1",
+      "algorithm": "sha512"
     }
   ]
 }
