@@ -15,12 +15,11 @@ jobs:
       # terraform plan -out plan.out
       # terraform show -json plan.out > plan.json
       - run: |
-          tfrstate run -plan-json plan.json -base-dir "$GITHUB_WORKSPACE" > result.json
-          length=$(jq length result.json)
-          if [ "$length" -eq 0 ]; then
+          tfrstate find -output-format markdown -plan-json plan.json -base-dir "$GITHUB_WORKSPACE" > result.md
+          if ! [ -s result.md ]; then
             exit 0
           fi
-          github-comment post -k output-change -var target:services/foo -var-file result:result.json
+          github-comment post -k output-change -var target:services/foo -var-file result:result.md
         working-directory: services/foo
         env:
           GITHUB_TOKEN: ${{github.token}}

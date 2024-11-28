@@ -31,33 +31,33 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-0/tfrstate_darwin_amd64.tar.gz",
-      "checksum": "800D02CE11883239DE5215FC2745FF19C63CBDE7A6DF691C5F1F1B6B33E0993F",
+      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-1/tfrstate_darwin_amd64.tar.gz",
+      "checksum": "F3DC0C17E65145ECEF4E964962E7402D178B47FF21C712343CEFE207BFD3EDC6",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-0/tfrstate_darwin_arm64.tar.gz",
-      "checksum": "245CF4DCA47B58B38A9E1CBC82EF021C282ED35FF006958AA9FF6DE2248F0FA1",
+      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-1/tfrstate_darwin_arm64.tar.gz",
+      "checksum": "327C5EA46E76E8EA7EF0D8B27BD47D9E5E61D2DB626D518D752CFF76C8099980",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-0/tfrstate_linux_amd64.tar.gz",
-      "checksum": "47090123584DAA11DF9E19AFF21DB0F379A382F10DBA6D1C8D0810E9851BA783",
+      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-1/tfrstate_linux_amd64.tar.gz",
+      "checksum": "FFC1163F7D9816B8EB82C9B276E7B1DFD774C9F3D7BADC785D2082CBC43613BB",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-0/tfrstate_linux_arm64.tar.gz",
-      "checksum": "3D60F42EC7B2A25D28AE1C6D1DE1B48FA2C3EDF5B3EAF6EB460C7D111C13AB5E",
+      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-1/tfrstate_linux_arm64.tar.gz",
+      "checksum": "BDFF25778787083C1667690013EDAA0143C3B3F8C41F716B9767931C9E4DCE39",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-0/tfrstate_windows_amd64.zip",
-      "checksum": "DE07EE4FF930D143F4B21959FE1929923A91CD525467CC366BEF89A22C30C47D",
+      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-1/tfrstate_windows_amd64.zip",
+      "checksum": "DD583160D933AD0FA588FB73C900186E30F3DCD0E0B48D133EF8B3493331A8B7",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-0/tfrstate_windows_arm64.zip",
-      "checksum": "B90BCF06692C92ACFD0206A3C455AB0A71F0A802A9C2E688A4FF6643E9C7C221",
+      "id": "github_release/github.com/suzuki-shunsuke/tfrstate/v0.1.0-1/tfrstate_windows_arm64.zip",
+      "checksum": "925C800F210941B68DD8F8CBD48BD513B2F68180717F18923359E8112FD53399",
       "algorithm": "sha256"
     },
     {

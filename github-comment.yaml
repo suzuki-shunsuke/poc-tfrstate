@@ -8,6 +8,4 @@ post:
 
       The following directories depend on the changed output values:
 
-      ```json
       {{.Vars.result | AvoidHTMLEscape}}
-      ```
