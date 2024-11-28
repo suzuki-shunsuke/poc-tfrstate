@@ -21,3 +21,5 @@ jobs:
           fi
           github-comment post -k output-change -var target:services/foo -var-file result:result.json
         working-directory: services/foo
+        env:
+          GITHUB_TOKEN: ${{github.token}}
