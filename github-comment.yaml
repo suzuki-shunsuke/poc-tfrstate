@@ -12,7 +12,7 @@ post:
       --- | --- | ---
       {{range fromJson .Vars.result -}}
         {{$dir := .dir -}}
-        {{range $value.files -}}
+        {{range .files -}}
           {{$dir}} | {{.path}} | {{.outputs | join ", "}}
         {{end -}}
       {{end -}}
