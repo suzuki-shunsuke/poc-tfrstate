@@ -17,7 +17,7 @@ jobs:
         with:
           aqua_version: v2.38.1
       # terraform apply -auto-approve
-      - run: ci-info run | sed -E "/^export //" >> "$GITHUB_ENV"
+      - run: ci-info run | sed "s/^export //" >> "$GITHUB_ENV"
       - run: |
           set -euo pipefail
           artifact_name=tfrstate.json
