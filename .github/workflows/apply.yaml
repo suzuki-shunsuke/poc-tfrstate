@@ -17,17 +17,19 @@ jobs:
         with:
           aqua_version: v2.38.1
       # terraform apply -auto-approve
+      - run: ci-info run | sed -E "/^export //" >> "$GITHUB_ENV"
       - run: |
           set -euo pipefail
-
           artifact_name=tfrstate.json
-
-          a=$(ci-info run)
-          eval "$a"
-          body=$(gh run list -w "test" -b "$CI_INFO_HEAD_REF" -L 1 --json headSha,databaseId --jq '.[0]')
+          body=$(gh run list -w "test" -b "$CI_INFO_HEAD_REF" -L 1 --json databaseId --jq '.[0]')
           run_id=$(echo "$body" | jq -r ".databaseId")
           gh run download -n "$artifact_name" "$run_id"
-
+        working-directory: services/foo
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+      - run: |
+          set -euo pipefail
+          set -x
           while read -r dir; do
             echo "[INFO] Creating a pull request: $dir" >&2
             file="$dir/.output_changes"
