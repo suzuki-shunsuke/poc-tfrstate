@@ -17,8 +17,9 @@ jobs:
       # Output markdown for human
       # Output JSON for machine (CI)
       # Upload JSON to GitHub Artifact
+      - run: tfrstate find -plan-json plan.json -base-dir "$GITHUB_WORKSPACE" > result.json
+        working-directory: services/foo
       - run: |
-          tfrstate find -plan-json plan.json -base-dir "$GITHUB_WORKSPACE" > result.json
           length=$(jq length result.json)
           if [ "$length" -eq 0 ]; then
             exit 0

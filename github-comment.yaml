@@ -10,7 +10,7 @@ post:
 
       dir | file | outputs
       --- | --- | ---
-      {{range $dir, $value :=  fromJson(.Vars.result)}}
+      {{range $dir, $value :=  fromJson .Vars.result}}
         {{range $value.files}}
           {{$dir}} | {{.path}} | {{.outputs | join ", "}}
         {{end}}
