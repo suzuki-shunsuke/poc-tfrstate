@@ -1,0 +1,35 @@
+---
+name: test
+on: pull_request
+jobs:
+  test:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: aquaproj/aqua-installer@f13c5d2f0357708d85477aabe50fd3f725528745 # v3.1.0
+        with:
+          aqua_version: v2.38.1
+      # terraform plan -out plan.out
+      # terraform show -json plan.out > plan.json
+      # Output markdown for human
+      # Output JSON for machine (CI)
+      # Upload JSON to GitHub Artifact
+      - run: tfrstate find -plan-json plan.json -base-dir "$GITHUB_WORKSPACE" > result.json
+        working-directory: services/foo
+      - run: |
+          length=$(jq length result.json)
+          if [ "$length" -eq 0 ]; then
+            exit 0
+          fi
+          github-comment post -k output-change -var target:services/foo -var-file result:result.json
+        working-directory: services/foo
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+
+      - uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
+        with:
+          name: tfrstate.json
+          path: services/foo/result.json

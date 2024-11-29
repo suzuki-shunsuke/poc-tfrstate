@@ -1,0 +1,42 @@
+---
+name: Create PRs
+on:
+  push:
+    branches:
+      - main
+jobs:
+  create-prs:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: aquaproj/aqua-installer@f13c5d2f0357708d85477aabe50fd3f725528745 # v3.1.0
+        with:
+          aqua_version: v2.38.1
+      # terraform apply -auto-approve
+      - run: |
+          set -euo pipefail
+
+          artifact_name=tfrstate.json
+
+          eval "$(ci-info run)"
+          body=$(gh run list -w "test" -b "$CI_INFO_HEAD_REF" -L 1 --json headSha,databaseId --jq '.[0]')
+          run_id=$(echo "$body" | jq -r ".databaseId")
+          gh run download -n "$artifact_name" "$run_id"
+
+          while read -r dir; do
+            echo "[INFO] Creating a pull request: $dir" >&2
+            file="$dir/.output_changes"
+            branch="output-changes-dir-${CI_INFO_PR_NUMBER}"
+            echo "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/pull/$CI_INFO_PR_NUMBER" >> "$file"
+            ghcp commit -r "$GITHUB_REPOSITORY" -b "$branch" -m "outputs are changed" "$file"
+            gh pr create -B "$branch" -t "Outputs were changed ($dir)" -b "Outputs were changed"
+            # Create a pull request
+          done < <(jq -r ".[].dir" result.json)
+        working-directory: services/foo
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+
