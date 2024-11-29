@@ -24,12 +24,10 @@ jobs:
           body=$(gh run list -w "test" -b "$CI_INFO_HEAD_REF" -L 1 --json databaseId --jq '.[0]')
           run_id=$(echo "$body" | jq -r ".databaseId")
           gh run download -n "$artifact_name" "$run_id"
-        working-directory: services/foo
         env:
           GITHUB_TOKEN: ${{github.token}}
       - run: |
           set -euo pipefail
-          set -x
           while read -r dir; do
             echo "[INFO] Creating a pull request: $dir" >&2
             file="$dir/.output_changes"
@@ -37,9 +35,7 @@ jobs:
             echo "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/pull/$CI_INFO_PR_NUMBER" >> "$file"
             ghcp commit -r "$GITHUB_REPOSITORY" -b "$branch" -m "outputs are changed" "$file"
             gh pr create -B "$branch" -t "Outputs were changed ($dir)" -b "Outputs were changed"
-            # Create a pull request
           done < <(jq -r ".[].dir" result.json)
-        working-directory: services/foo
         env:
           GITHUB_TOKEN: ${{github.token}}
 
