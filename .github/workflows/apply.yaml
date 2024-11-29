@@ -23,7 +23,6 @@ jobs:
           artifact_name=tfrstate.json
 
           eval "$(ci-info run)"
-          pr_head_sha=$(jq -r ".head.sha" "$CI_INFO_TEMP_DIR/pr.json")
           body=$(gh run list -w "test" -b "$CI_INFO_HEAD_REF" -L 1 --json headSha,databaseId --jq '.[0]')
           run_id=$(echo "$body" | jq -r ".databaseId")
           gh run download -n "$artifact_name" "$run_id"
