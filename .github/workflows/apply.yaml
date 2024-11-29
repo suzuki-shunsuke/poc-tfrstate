@@ -49,7 +49,7 @@ jobs:
             branch="output-changes-dir-${CI_INFO_PR_NUMBER}"
             echo "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/pull/$CI_INFO_PR_NUMBER" >> "$file"
             ghcp commit -r "$GITHUB_REPOSITORY" -b "$branch" -m "outputs are changed" "$file"
-            gh pr create -B "$branch" -t "Outputs were changed ($dir)" -b "Outputs were changed"
+            gh pr create -H "$branch" -t "Outputs were changed ($dir)" -b "Outputs were changed"
           done < <(jq -r ".[].dir" result.json)
         env:
           GITHUB_TOKEN: ${{steps.token.outputs.token}}
