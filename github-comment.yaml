@@ -10,9 +10,9 @@ post:
 
       dir | file | outputs
       --- | --- | ---
-      {{range $dir, $value :=  fromJson .Vars.result}}
-        {{range $value.files}}
+      {{range fromJson .Vars.result -}}
+        {{$dir := .dir -}}
+        {{range $value.files -}}
           {{$dir}} | {{.path}} | {{.outputs | join ", "}}
-        {{end}}
-      {{end}}
-
+        {{end -}}
+      {{end -}}
